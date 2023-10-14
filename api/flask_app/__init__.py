@@ -24,8 +24,11 @@ def create_app(config_class=Config):
     # from app.auth import bp as auth_bp
     # api.register_blueprint(auth_bp)
 
-    from flask_app.resources import user_bp#, article_bp, comment_bp, category_bp, tag_bp, newsletter_bp, analytics_bp
-    api.register_blueprint(user_bp)
+    from flask_app.resources import auth_bp, patient_bp, doctor_bp, visits_bp
+    api.register_blueprint(auth_bp)
+    api.register_blueprint(patient_bp)
+    api.register_blueprint(doctor_bp)
+    api.register_blueprint(visits_bp)
     # api.register_blueprint(article_bp)
     # api.register_blueprint(comment_bp)
     # api.register_blueprint(category_bp)

@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from time import time
 from datetime import timedelta, datetime
-import json
 from flask_app import db
 
 class User(db.Model):
@@ -12,8 +11,12 @@ class User(db.Model):
     email = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
     is_doctor = db.Column(db.Boolean())
+    hospital = db.Column(db.String())
+    title = db.Column(db.String())
+    name = db.Column(db.String())
     doctor_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     doctor = db.relationship('User', remote_side=[id])
+    visits = db.relationship('PatientUpdate', backref='patient', lazy='dynamic')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -39,3 +42,14 @@ class User(db.Model):
 
     def __repr__(self):
         return f'<User {self.username}>'
+    
+class PatientUpdate(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    datetime = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    # medical data or something
+    weight = db.Column(db.Integer())
+    height = db.Column(db.Integer())
+    heartbeat = db.Column(db.Integer())
+    notes = db.Column(db.String())
+
+    patient_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
