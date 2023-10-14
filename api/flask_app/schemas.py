@@ -1,7 +1,7 @@
 from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field
 from marshmallow import fields
 from flask_app import db
-from flask_app.models import User, PatientUpdate
+from flask_app.models import User, PatientUpdate, Event
 
 class Schema(SQLAlchemySchema):
     def load(self, *args, **kwargs):
@@ -53,6 +53,17 @@ class AuthSchema(Schema):
     username = fields.String(required=True)
     password = fields.String(required=True)
 
+class EventSchema(Schema):
+    class Meta:
+        model = Event
+        ordered = True
+
+    id = auto_field(required=True, dump_only=True)
+    start_time = auto_field(required=True)
+    end_time = auto_field(required=True)
+    title = auto_field(required=True)
+    location = auto_field(required=True)
+    logo = auto_field(required=True)
 
 class VisitSchema(Schema):
     class Meta:
@@ -65,3 +76,8 @@ class VisitSchema(Schema):
     height = auto_field(required=True)
     heartbeat = auto_field(required=True)
     notes = auto_field(required=True)
+
+
+
+class ChatSchema(Schema):
+    recommendation = fields.String(required=True)

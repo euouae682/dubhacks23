@@ -3,8 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_smorest import Api
 from config import Config
-import logging
-from logging.handlers import SMTPHandler
 from flask_app.http_token_auth import HTTPTokenAuth
 
 httpauth = HTTPTokenAuth('Bearer')
@@ -24,11 +22,13 @@ def create_app(config_class=Config):
     # from app.auth import bp as auth_bp
     # api.register_blueprint(auth_bp)
 
-    from flask_app.resources import auth_bp, patient_bp, doctor_bp, visits_bp
+    from flask_app.resources import auth_bp, patient_bp, doctor_bp, visit_bp, ai_bp, event_bp
     api.register_blueprint(auth_bp)
     api.register_blueprint(patient_bp)
     api.register_blueprint(doctor_bp)
-    api.register_blueprint(visits_bp)
+    api.register_blueprint(visit_bp)
+    api.register_blueprint(ai_bp)
+    api.register_blueprint(event_bp)
     # api.register_blueprint(article_bp)
     # api.register_blueprint(comment_bp)
     # api.register_blueprint(category_bp)

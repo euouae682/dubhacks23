@@ -2,7 +2,7 @@ from flask.views import MethodView
 from flask_smorest import abort
 from flask_app.models import User, PatientUpdate
 from flask_app.schemas import VisitSchema
-from flask_app.resources import visits_bp as bp
+from flask_app.resources import visit_bp as bp
 from flask_app import httpauth, db
 from flask.views import MethodView
 

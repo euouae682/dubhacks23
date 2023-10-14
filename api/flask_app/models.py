@@ -17,6 +17,7 @@ class User(db.Model):
     doctor_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
     doctor = db.relationship('User', remote_side=[id])
     visits = db.relationship('PatientUpdate', backref='patient', lazy='dynamic')
+    events = db.relationship('Event', backref='patient', lazy='dynamic')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -51,5 +52,15 @@ class PatientUpdate(db.Model):
     height = db.Column(db.Integer())
     heartbeat = db.Column(db.Integer())
     notes = db.Column(db.String())
+
+    patient_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+
+class Event(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    start_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    end_time = db.Column(db.DateTime(), index=True, default=datetime.utcnow)
+    title = db.Column(db.String())
+    location = db.Column(db.String())
+    logo = db.Column(db.String()) # url or like hard code the types i guess lol
 
     patient_id = db.Column(db.Integer(), db.ForeignKey('user.id'))

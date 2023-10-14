@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 75dfc5c0a5f2
+Revision ID: 5b27dd0924cd
 Revises: 
-Create Date: 2023-10-14 15:14:23.288043
+Create Date: 2023-10-14 16:12:42.481023
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '75dfc5c0a5f2'
+revision = '5b27dd0924cd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,6 +31,21 @@ def upgrade():
     sa.ForeignKeyConstraint(['doctor_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('event',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('start_time', sa.DateTime(), nullable=True),
+    sa.Column('end_time', sa.DateTime(), nullable=True),
+    sa.Column('title', sa.String(), nullable=True),
+    sa.Column('location', sa.String(), nullable=True),
+    sa.Column('logo', sa.String(), nullable=True),
+    sa.Column('patient_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['patient_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    with op.batch_alter_table('event', schema=None) as batch_op:
+        batch_op.create_index(batch_op.f('ix_event_end_time'), ['end_time'], unique=False)
+        batch_op.create_index(batch_op.f('ix_event_start_time'), ['start_time'], unique=False)
+
     op.create_table('patient_update',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('datetime', sa.DateTime(), nullable=True),
@@ -54,5 +69,10 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_patient_update_datetime'))
 
     op.drop_table('patient_update')
+    with op.batch_alter_table('event', schema=None) as batch_op:
+        batch_op.drop_index(batch_op.f('ix_event_start_time'))
+        batch_op.drop_index(batch_op.f('ix_event_end_time'))
+
+    op.drop_table('event')
     op.drop_table('user')
     # ### end Alembic commands ###
