@@ -192,8 +192,8 @@ export function Main() {
       <div className="grid grid-cols-5 gap-5 h-64">
         <div className="col-span-3 bg-orange-200 p-5 rounded-xl text-orange-900">
           <h3 className="font-bold tracking-wide">Medication</h3>
-          <div>
-            <div>
+          <div className="bg-orange-600 p-3">
+            <div className="flex gap-3 text-white">
               <svg
                 width="26"
                 height="30"
@@ -216,6 +216,7 @@ export function Main() {
                   stroke-linejoin="round"
                 />
               </svg>
+              <h4>Vancomycin</h4>
             </div>
           </div>
         </div>
