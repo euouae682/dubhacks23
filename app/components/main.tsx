@@ -9,7 +9,6 @@
 export function Main() {
     return (
       <nav className="text-red-500 text-xl">
-        <!--
       </nav>
     )
   }
