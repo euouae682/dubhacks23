@@ -1,7 +1,3 @@
 export function Navbar() {
-  return (
-    <nav className="text-red-500 text-xl">
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    </nav>
-  )
+  return <nav className="text-xl bg-cyan-300">NAV BAR</nav>;
 }

@@ -7,10 +7,5 @@
 // AI thing
 
 export function Main() {
-    return (
-      <nav className="text-red-500 text-xl">
-        <!--
-      </nav>
-    )
-  }
-  
+  return <nav className="text-xl col-span-6 bg-zinc-300">MAIN</nav>;
+}

@@ -1,8 +1,3 @@
 export function Diagram() {
-    return (
-      <nav className="text-red-500 text-xl">
-          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-      </nav>
-    )
-  }
-  
+  return <nav className="text-xl  col-span-3">HUMAN DIAGRAM</nav>;
+}
