@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "flask-dev": "set FLASK_APP=api/index.py && python -m flask run",
+    "flask-dev": "set FLASK_APP=api/index.py && python -m flask run -p 5328",
     "next-dev": "next dev",
     "build": "next build",
     "start": "next start",
