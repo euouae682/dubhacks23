@@ -14,25 +14,25 @@ export function AIRecommendations() {
   const [recList, setRecList] = useState([
     {
       index: 0,
-      title: "Walking for 30 minutes.",
+      title: "Walk for 30 minutes.",
       description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
+        "Walking is beneficial for your health because it improves cardiovascular fitness, reducing the risk of heart disease and high blood pressure.",
     },
     {
       index: 1,
-      title: "Meditating for 15 minutes.",
+      title: "Meditate for 15 minutes.",
       description:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
     {
       index: 2,
-      title: "Hiking for 45 minutes.",
+      title: "Hike for 45 minutes.",
       description:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
     {
       index: 3,
-      title: "Walking for an hour.",
+      title: "Walk for an hour.",
       description:
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
