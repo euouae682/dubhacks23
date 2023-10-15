@@ -17,6 +17,7 @@ class PatientSchema(Schema):
     email = auto_field(required=True)
     password = fields.String(required=True, load_only=True)
     name = auto_field(required=True)
+    birthday = auto_field(required=True)
     doctor_id = auto_field()
 
 class PatientSchemaPasswordless(PatientSchema):
@@ -64,6 +65,8 @@ class EventSchema(Schema):
     title = auto_field(required=True)
     location = auto_field(required=True)
     logo = auto_field()
+    details = fields.String()
+
 
 class VisitSchema(Schema):
     class Meta:
@@ -77,6 +80,9 @@ class VisitSchema(Schema):
     heartbeat = auto_field(required=True)
     treatment = auto_field(required=True)
     notes = auto_field(required=True)
+    white_blood_cells = auto_field(required=True)
+    diagnoses = auto_field(required=True)
+    gender = auto_field(required=True)
 
 class PainPointSchema(Schema):
     class Meta:
