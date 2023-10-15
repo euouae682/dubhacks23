@@ -34,3 +34,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 __pycache__
+
+/api/carbide-comfort-402100-95df6bda8187.json
+/api/.env
