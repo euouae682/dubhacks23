@@ -75,6 +75,7 @@ class VisitSchema(Schema):
     weight = auto_field(required=True)
     height = auto_field(required=True)
     heartbeat = auto_field(required=True)
+    treatment = auto_field(required=True)
     notes = auto_field(required=True)
 
 class PainPointSchema(Schema):
