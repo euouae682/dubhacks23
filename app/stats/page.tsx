@@ -3,10 +3,12 @@ import Link from "next/link";
 import { Navbar } from "../navbar";
 import { Notes } from "./components/notes";
 
-export default  function Stats() {
+export default function Stats() {
   return (
     <main className="flex h-screen">
-      <div className="bg-orange-600 p-5 pt-10">
+      <img src="Stats-UI.png" />
+
+      {/* <div className="bg-orange-600 p-5 pt-10">
         <Navbar />
       </div>
       <div className="flex">
@@ -18,7 +20,7 @@ export default  function Stats() {
             <div className="border-solid border-red-500 border-8 row-span-2"></div>
             <div className="border-solid border-red-500 border-8"></div>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
