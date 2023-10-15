@@ -2,17 +2,18 @@ import Image from "next/image";
 
 interface Note {
   author: String;
+  img: String;
   date: String;
   subtitle: String;
   description: String;
 }
 
-export function Note({ author, date, subtitle, description }: Note) {
+export function Note({ author, img, date, subtitle, description }: Note) {
   return (
     <div className="my-3 p-5 rounded-xl bg-orange-100">
       <div className="flex gap-5 items-center mb-3 relative">
         <Image
-          src="/doctor-temp.jpg"
+          src=""
           alt="bison"
           width={80}
           height={80}

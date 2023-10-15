@@ -24,7 +24,10 @@ export function Profile() {
         </p>
       </div>
 
-      <img src="doctor-temp.jpg" className="w-5/12" />
+      <img
+        src="luna-silver.svg"
+        className="w-5/12 rounded-xl border-orange-800 border-2 object-cover"
+      />
     </div>
   );
 }
