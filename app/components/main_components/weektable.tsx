@@ -1,4 +1,34 @@
+'use client';
+
+import { useState, useEffect } from "react";
+
 export function WeekTable() {
+  const DAYS: String[] = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+  const [curDateTime, setCurDateTime] = useState(new Date());
+  const [dateRange, setDateRange] = useState([new Date(), new Date()]);
+
+  const initializeDateRange = () => {
+    const firstDate: Date = new Date(curDateTime.getFullYear(), curDateTime.getMonth(), curDateTime.getDate() - curDateTime.getDay());
+    const lastDate: Date = new Date(curDateTime.getFullYear(), curDateTime.getMonth(), firstDate.getDate() + 6);
+    setDateRange([firstDate, lastDate]);
+  }
+
+  const addWeek = () => {
+    dateRange[0].setDate(dateRange[0].getDate() + 7);
+    dateRange[1].setDate(dateRange[1].getDate() + 7);
+    setDateRange([dateRange[0], dateRange[1]]);
+  }
+
+  const removeWeek = () => {
+    dateRange[0].setDate(dateRange[0].getDate() - 7);
+    dateRange[1].setDate(dateRange[1].getDate() - 7);
+    setDateRange([dateRange[0], dateRange[1]]);
+  }
+
+  useEffect(() => {
+    initializeDateRange();
+  }, [curDateTime])
+  
     return (
       <div className="bg-orange-200 rounded-xl p-5">
         <header className="flex justify-between mb-5 text-orange-900">
@@ -12,6 +42,7 @@ export function WeekTable() {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6"
+                onClick={removeWeek}
               >
                 <path
                   strokeLinecap="round"
@@ -21,7 +52,8 @@ export function WeekTable() {
               </svg>
             </a>
 
-            <p>NOV 11-17</p>
+            <p>{dateRange[0].toDateString().slice(4, 10)} -  
+            {' ' + dateRange[1].toDateString().slice(4, 10)}</p>
 
             <a href="#">
               <svg
@@ -31,6 +63,7 @@ export function WeekTable() {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6"
+                onClick={addWeek}
               >
                 <path
                   strokeLinecap="round"
@@ -42,62 +75,24 @@ export function WeekTable() {
           </div>
         </header>
         <div className="grid grid-cols-7 gap-5 text-lg text-center text-white">
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>MON</p>
-            <p>11</p>
-            <p>&#9679;</p>
+          {[dateRange[0], 
+          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[0].getDate() + 1),
+          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[0].getDate() + 2), 
+          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[0].getDate() + 3),
+          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[1].getDate() - 2), 
+          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[1].getDate() - 1),
+          dateRange[1]].map((date) => {
+            return <a
+              href="#"
+              className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
+            >
+              <p>{
+                DAYS[date.getDay()]
+              }</p>
+              <p>{ date.getDate() }</p>
+              <p>{ date.toDateString() === new Date().toDateString() ? '\u25CF' : '' }</p>
           </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>TUE</p>
-            <p>12</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>WED</p>
-            <p>13</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>THU</p>
-            <p>14</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>FRI</p>
-            <p>15</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>SAT</p>
-            <p>16</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>SUN</p>
-            <p>17</p>
-            <p></p>
-          </a>
+          })}
         </div>
       </div>
     )
