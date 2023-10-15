@@ -5,12 +5,12 @@
 // Appointment Dates (weekly)
 // Time Schedule (hourly)
 // AI thing
-'use client';
+"use client";
 
 import { WeekTable } from "./main_components/weektable";
 import { HourTable } from "./main_components/hourtable";
 import { Medications } from "./main_components/medications";
-import { TemporaryAIComponentName } from "./main_components/tempai";
+import { Chatbot } from "./main_components/chatbot";
 import { useState } from "react";
 
 export function Main() {
@@ -44,8 +44,10 @@ export function Main() {
             </svg>
 
             <input
-              className="text-orange-900 bg-orange-200 rounded-xl px-6 py-3 focus:outline-none"
+              className="text-orange-900 bg-orange-200 rounded-xl px-6 py-3 focus:outline-none 
+              placeholder-orange-800"
               type="text"
+              placeholder="Search for..."
             />
           </div>
 
@@ -73,30 +75,37 @@ export function Main() {
           </a>
         </div>
         <div className="flex gap-2 items-center text-orange-950">
-          <p>John Doe</p>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="45"
+            viewBox="0 0 50 45"
             fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-10 h-10"
+            xmlns="http://www.w3.org/2000/svg"
           >
+            <rect width="50" height="45" rx="10" fill="#CB583C" />
+            <circle cx="25" cy="15" r="10" fill="#FFD18C" />
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+              d="M20.5 22.5H30.5L36 26.5L37.5 29.5L39 32L40 36L40.5 40L41.5 45H10H7.5L9 40L10 36L11.5 32L12.5 29.5L15 26.5L20.5 22.5Z"
+              fill="#FFD18C"
             />
           </svg>
+
+          <div className="text-base text-white">
+            <p>Good morning.</p>
+            <p>Hello, John Doe.</p>
+          </div>
         </div>
       </header>
 
-      <WeekTable selectedDate={selectedDate} onClickDay={(e: any) => setSelectedDate(e.target.id)} />
+      <WeekTable
+        selectedDate={selectedDate}
+        onClickDay={(e: any) => setSelectedDate(e.target.id)}
+      />
       <HourTable selectedDate={selectedDate} />
 
-      <div className="grid grid-cols-5 gap-5 h-64">
+      <div className="grid grid-cols-5 gap-5 h-96">
         <Medications />
-        <TemporaryAIComponentName />
+        <Chatbot />
       </div>
     </main>
   );

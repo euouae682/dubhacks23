@@ -1,21 +1,21 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import "./globals.css";
+import { Nunito } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'NAME OF PROJECT',
-  description: 'DESCRIPTION OF PROJECT',
-}
+  title: "NAME OF PROJECT",
+  description: "DESCRIPTION OF PROJECT",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={nunito.className}>{children}</body>
     </html>
-  )
+  );
 }
