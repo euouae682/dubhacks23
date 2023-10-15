@@ -16,6 +16,7 @@ import { AIRecommendations } from "./main_components/airecommendations";
 
 export function Main() {
   const [selectedDate, setSelectedDate] = useState("2000-10-10");
+  const [eventToAdd, setEventToAdd] = useState();
 
   return (
     <main className="flex flex-col gap-10 text-xl col-span-6 bg-orange-400 p-10">

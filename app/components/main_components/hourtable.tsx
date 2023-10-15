@@ -56,9 +56,9 @@ export function HourTable({ selectedDate }: HourTableProps) {
             return event.start_time.slice(0, 10) === selectedDate ? <ScheduleItem color="bg-orange-600" name={event.title} location={event.location} begin={new Date(event.start_time.slice(0, 16))} end={new Date(event.end_time.slice(0, 16))} scheduleBegin={beginTime} zAlign={0} /> : ' ';
           })}
 
-          <ScheduleItem color="bg-orange-700" name="Blood Draw" location="Floor 3, Room 311" begin={new Date('2023-10-14T10:40')} end={new Date('2023-10-14T12:40')} scheduleBegin={beginTime} zAlign={0} />
-          <ScheduleItem color="bg-orange-600" name="Web Development Hell" location="MGH 342" begin={new Date('2023-10-14T11:30')} end={new Date('2023-10-14T14:55')} scheduleBegin={beginTime} zAlign={1} />
-          <ScheduleItem color="bg-orange-600" name="Salvation" location="freedom" begin={new Date('2023-10-14T14:00')} end={new Date('2023-10-14T15:30')} scheduleBegin={beginTime} zAlign={2} />
+          <ScheduleItem color="bg-orange-700" name="Blood Draw" location="Floor 3, Room 311" begin={new Date('2023-10-15T10:40')} end={new Date('2023-10-15T12:40')} scheduleBegin={beginTime} zAlign={0} />
+          <ScheduleItem color="bg-orange-600" name="Web Development Hell" location="MGH 342" begin={new Date('2023-10-15T11:30')} end={new Date('2023-10-15T14:55')} scheduleBegin={beginTime} zAlign={1} />
+          <ScheduleItem color="bg-orange-600" name="Salvation" location="freedom" begin={new Date('2023-10-16T14:00')} end={new Date('2023-10-16T15:30')} scheduleBegin={beginTime} zAlign={2} />
         </div>
       </div>
     )
