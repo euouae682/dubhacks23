@@ -9,6 +9,7 @@ class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(32))
     email = db.Column(db.String(64))
+    birthday = db.Column(db.Date())
     password_hash = db.Column(db.String(128))
     is_doctor = db.Column(db.Boolean())
     hospital = db.Column(db.String())
@@ -50,7 +51,10 @@ class PatientUpdate(db.Model):
     # medical data or something
     weight = db.Column(db.Integer())
     height = db.Column(db.Integer())
+    gender = db.Column(db.String())
+    diagnoses = db.Column(db.String())
     heartbeat = db.Column(db.Integer())
+    white_blood_cells = db.Column(db.Integer())
     treatment = db.Column(db.String())
     notes = db.Column(db.String())
 
