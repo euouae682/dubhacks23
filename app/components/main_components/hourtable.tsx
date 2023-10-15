@@ -36,7 +36,7 @@ export function HourTable({ selectedDate }: HourTableProps) {
   }
 
     return (
-      <div className="bg-orange-100 rounded-xl p-5 overflow-hidden">
+      <div className="bg-orange-100 rounded-3xl p-5 overflow-hidden">
         <h3 className="font-bold tracking-wide text-orange-900" onClick={debugFetch}>
           Your Schedule
         </h3>

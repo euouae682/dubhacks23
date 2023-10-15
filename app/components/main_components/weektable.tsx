@@ -47,7 +47,7 @@ export function WeekTable({ selectedDate, onClickDay }: WeekTableProps) {
   }, [curDateTime]);
 
   return (
-    <div className="bg-orange-200 rounded-xl p-5">
+    <div className="bg-orange-200 rounded-3xl p-5">
       <header className="flex justify-between mb-5 text-orange-900">
         <h3 className="font-bold tracking-wide">Your TeleHealth Schedule</h3>
         <div className="flex gap-5 items-center">
