@@ -84,7 +84,7 @@ export function WeekTable() {
           dateRange[1]].map((date) => {
             return <a
               href="#"
-              className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
+              className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition box-border border-4 border-transparent  focus:border-orange-800"
             >
               <p>{
                 DAYS[date.getDay()]

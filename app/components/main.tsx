@@ -5,13 +5,17 @@
 // Appointment Dates (weekly)
 // Time Schedule (hourly)
 // AI thing
+'use client';
 
 import { WeekTable } from "./main_components/weektable";
 import { HourTable } from "./main_components/hourtable";
 import { Medications } from "./main_components/medications";
 import { TemporaryAIComponentName } from "./main_components/tempai";
+import { useState } from "react";
 
 export function Main() {
+  
+
   return (
     <main className="flex flex-col gap-10 text-xl col-span-6 bg-orange-400 p-10">
       <header className="flex justify-between items-center">
