@@ -7,7 +7,7 @@ export function Notes() {
   const [noteList, setNoteList] = useState([]);
 
   return (
-    <div className="p-5 bg-orange-200 rounded-xl">
+    <div className="p-5 bg-orange-200 rounded-xl h-full">
       <h3 className="text-2xl text-orange-900 font-bold">Notes</h3>
 
       <Note
