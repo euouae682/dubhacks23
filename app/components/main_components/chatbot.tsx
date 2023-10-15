@@ -2,7 +2,7 @@ export function Chatbot() {
   return (
     <div
       className="col-span-2 bg-orange-200 p-5 rounded-xl text-orange-900 bg-[url(/chatbot.png)]
-      bg-[length:8rem] bg-no-repeat bg-right-bottom"
+      bg-[length:10rem] bg-no-repeat bg-right-bottom"
     >
       <div className="flex items-center gap-3 mb-5">
         <img
@@ -18,11 +18,11 @@ export function Chatbot() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 w-8/12 text-center">
+      <div className="flex flex-col gap-3 w-8/12 text-left text-2xl font-bold">
         <p>Ask any of your question on OncoChat!</p>
         <a
           href="#"
-          className="text-white bg-orange-600 mx-auto px-6 py-3 rounded-xl hover:bg-orange-700 transition"
+          className="text-white bg-orange-800 mr-auto px-6 py-3 rounded-xl hover:bg-orange-900 transition"
         >
           Chat Now!
         </a>
