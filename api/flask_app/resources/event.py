@@ -26,7 +26,7 @@ class EventsView(MethodView):
     @bp.response(201, EventSchema)
     def post(self, event_data, id):
         '''
-        Create new vist.
+        Create new visit.
         '''
         patient = get_patient(id)
         event = Event(patient_id=id)
@@ -35,37 +35,3 @@ class EventsView(MethodView):
         db.session.add(event)
         db.session.commit()
         return event
-    
-# @bp.route('/visits/<int:id>')
-# class visitView(MethodView): 
-#     @bp.response(200, visitSchema)
-#     def get(self, id):
-#         return get_patient(id)
-
-#     @bp.arguments(PatientSchemaPasswordless)
-#     @bp.response(200, PatientSchema)
-#     def put(self, patient_data, id):
-#         '''
-#         Use to edit patient data, including doctor.
-#         '''
-#         patient = get_patient(id)
-#         for field in patient_data:
-#             setattr(patient, field, patient_data[field])
-#         db.session.commit()
-#         return patient
-
-#     @bp.response(200)
-#     def delete(self, id):
-#         patient = get_patient(id)
-#         db.session.delete(patient)
-#         db.session.commit()
-
-# @bp.route('/doctors/<int:id>/patients')
-# class DoctorPatientsView(MethodView):
-#     @bp.response(200, PatientSchema(many=True))
-#     def get(self, id):
-#         '''
-#         Returns list of a doctor's current patients.
-#         '''
-#         return User.query.filter_by(doctor_id=id).all()
-    
