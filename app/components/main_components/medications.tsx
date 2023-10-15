@@ -1,7 +1,40 @@
+import { useState, useEffect } from 'react';
+
 export function Medications() {
+  const patient_id = 1
+  const [treatment, setTreatment] = useState(null)
+  const [drugInfo, setDrugInfo] = useState(null)
+  const [isLoading, setLoading] = useState(true)
+ 
+  useEffect(() => {
+    fetch(`/api/patients/${patient_id}/visits`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTreatment(data[0].treatment)
+        setLoading(false)
+      })
+  }, [])
+
+  useEffect(() => {
+    if (treatment) {
+      setLoading(true)
+      fetch(`https://api.fda.gov/drug/label.json?search=openfda.generic_name:${treatment}&limit=1`)
+      .then((res) => res.json())
+      .then((data) => {
+        const result = data['results'][0]
+        console.log(result)
+        setDrugInfo(result)
+        setLoading(false)
+      })
+    }
+  }, [treatment])
+ 
+  if (isLoading) return <p>Loading...</p>
+  if (!treatment) return <p>No medication data</p>
+  if (!drugInfo) return <p>No medication data</p>
+
     return (
         <div className="col-span-3 bg-orange-200 p-5 rounded-xl text-orange-900">
-        <h3 className="font-bold tracking-wide">Medication</h3>
         <div className="bg-orange-600 p-3">
           <div className="flex gap-3 text-white">
             <svg
@@ -26,7 +59,19 @@ export function Medications() {
                 stroke-linejoin="round"
               />
             </svg>
-            <h4>Vancomycin</h4>
+            <h4>{treatment}</h4>
+          </div>
+          <div className="grid grid-cols-2 gap-1">
+            <div>
+              <p className="text-xs line-clamp-6 hover:line-clamp-none">
+                {drugInfo.information_for_patients[0]}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs line-clamp-6">
+                {drugInfo.adverse_reactions[0]}
+              </p>
+            </div>
           </div>
         </div>
       </div>
