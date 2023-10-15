@@ -27,7 +27,7 @@ export function Diagram() {
     knee: ["63", "40"],
     ankle: ["84", "57"],
     shoulder: ["23", "40"],
-    elbow: ["36", "70"],
+    elbow: ["30", "70"],
     hand: ["49", "18"],
   };
 

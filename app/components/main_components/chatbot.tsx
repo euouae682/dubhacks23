@@ -6,8 +6,8 @@ export function Chatbot() {
     >
       <div className="flex items-center gap-3 mb-5">
         <img
-          src="doctor-temp.jpg"
-          className="rounded-lg border-4 border-orange-300 w-16 h-16"
+          src="doctor-love.svg"
+          className="rounded-lg border-2 border-orange-900 w-16 h-16"
         />
         <div>
           <h3 className="font-bold">Dr. Love is offline.</h3>

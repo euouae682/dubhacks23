@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 
 interface Recommendation {
-  index: number
-  title: String,
-  description: String,
+  index: number;
+  title: String;
+  description: String;
 }
 
 export function AIRecommendations() {
@@ -14,46 +14,37 @@ export function AIRecommendations() {
   const [recList, setRecList] = useState([
     {
       index: 0,
-      title: 'Walking for 30 minutes.',
-      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      title: "Walk for 30 minutes.",
+      details:
+        "Walking is beneficial for your health because it improves cardiovascular fitness, reducing the risk of heart disease and high blood pressure.",
     },
     {
       index: 1,
-      title: 'Meditating for 15 minutes.',
-      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      title: "Meditating for 15 minutes.",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
     {
       index: 2,
-      title: 'Hiking for 45 minutes.',
-      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      title: "Hiking for 45 minutes.",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
     {
       index: 3,
-      title: 'Walking for an hour.',
-      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      title: "Walking for an hour.",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
-  ])
-  useEffect(() => {
-    fetch(`/api/patients/${patient_id}/recommendations/openai`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({'date': '2023-10-15'}),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setRecList(data.map( (rec, i) => { return {'index': i, 'title': rec.title, 'details': rec.details}}))
-      }).then(() => {console.log(recList)})
-  }, [])
+  ]);
 
   const updateFocus = (e: any) => {
     setSelectedIndex(parseInt(e.target.id));
-  }
+  };
 
   const debugFocus = () => {
-    console.log(selectedIndex)
-  }
+    console.log(selectedIndex);
+  };
 
   return (
     <div className="col-span-3 flex flex-col justify-between bg-orange-200 p-5 rounded-3xl">
@@ -62,13 +53,13 @@ export function AIRecommendations() {
       </h3>
 
       <div className="flex items-center gap-5 mb-5">
-        <img src="chatbot.png" className="w-3/12 h-auto" />
+        <img src="walking.png" className="w-3/12 h-auto" />
         <div className="grow flex flex-col gap-3">
           <h4 className="text-orange-900 font-bold text-3xl">
-            { recList[selectedIndex].title }
+            {recList[selectedIndex].title}
           </h4>
           <p className="text-orange-800 text-base">
-            { recList[selectedIndex].details }
+            {recList[selectedIndex].description}
           </p>
           <p className="text-orange-800 font-bold" onClick={debugFocus}>
             Add time to your calendar?
@@ -90,11 +81,22 @@ export function AIRecommendations() {
         </div>
       </div>
       <div className="flex gap-5 justify-center">
-        { recList.map((rec) => {
-          return <div key={rec.index} id={rec.index.toString()} onClick={updateFocus} 
-          style={{backgroundColor: selectedIndex === rec.index ? 'rgb(154 52 18)' : 'rgb(234 88 12)'}}
-          className="cursor-pointer w-6 h-6 bg-orange-600 hover:bg-orange-700 rounded-full"></div>
-        }) }
+        {recList.map((rec) => {
+          return (
+            <div
+              key={rec.index}
+              id={rec.index.toString()}
+              onClick={updateFocus}
+              style={{
+                backgroundColor:
+                  selectedIndex === rec.index
+                    ? "rgb(154 52 18)"
+                    : "rgb(234 88 12)",
+              }}
+              className="cursor-pointer w-6 h-6 bg-orange-600 hover:bg-orange-700 rounded-full"
+            ></div>
+          );
+        })}
       </div>
     </div>
   );
