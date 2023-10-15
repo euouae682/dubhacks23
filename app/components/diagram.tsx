@@ -29,13 +29,13 @@ export function Diagram() {
 
   return (
     <div className="col-span-3 bg-orange-200">
-      <div className="h-full w-[30%] grid absolute grid-cols-8 grid-rows-12">
+      <div className="h-full w-[30%] grid grid-cols-8 grid-rows-12 fixed">
           { Array.apply(null, Array(96)).map(function () {}).map(() => {
             return <div className="w-1/8 ml-5 border-solid border-t-4 border-orange-800 border-opacity-25"></div>
           })}
       </div>
-      <div className="relative h-full m-auto bg-[url('/humandiagram.png')] bg-no-repeat bg-top bg-[length:100%]">
-        <ul className="relative h-full">
+      <div className="fixed w-[32%] h-full m-auto bg-[url('/humandiagram.png')] bg-no-repeat bg-top bg-[length:100%]">
+        <ul className="h-full">
           {healthPoints.map(({ topPos, leftPos, status }) => {
             return (
               <li
