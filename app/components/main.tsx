@@ -9,7 +9,7 @@
 import { WeekTable } from "./main_components/weektable";
 import { HourTable } from "./main_components/hourtable";
 import { Medications } from "./main_components/medications";
-import { TemporaryAIComponentName } from "./main_components/tempai";
+import { Chatbot } from "./main_components/chatbot";
 
 export function Main() {
   return (
@@ -92,7 +92,7 @@ export function Main() {
 
       <div className="grid grid-cols-5 gap-5 h-64">
         <Medications />
-        <TemporaryAIComponentName />
+        <Chatbot />
       </div>
     </main>
   );
