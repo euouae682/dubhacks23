@@ -12,6 +12,7 @@ import { HourTable } from "./main_components/hourtable";
 import { Medications } from "./main_components/medications";
 import { Chatbot } from "./main_components/chatbot";
 import { useState } from "react";
+import { AIRecommendations } from "./main_components/airecommendations";
 
 export function Main() {
   const [selectedDate, setSelectedDate] = useState("2000-10-10");
@@ -104,7 +105,7 @@ export function Main() {
       <HourTable selectedDate={selectedDate} />
 
       <div className="grid grid-cols-5 gap-5 h-96">
-        <Medications />
+        <AIRecommendations />
         <Chatbot />
       </div>
     </main>
