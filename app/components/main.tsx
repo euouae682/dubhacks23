@@ -6,6 +6,11 @@
 // Time Schedule (hourly)
 // AI thing
 
+import { WeekTable } from "./main_components/weektable";
+import { HourTable } from "./main_components/hourtable";
+import { Medications } from "./main_components/medications";
+import { TemporaryAIComponentName } from "./main_components/tempai";
+
 export function Main() {
   return (
     <main className="flex flex-col gap-10 text-xl col-span-6 bg-orange-400 p-10">
@@ -82,147 +87,12 @@ export function Main() {
         </div>
       </header>
 
-      <div className="bg-orange-200 rounded-xl p-5">
-        <header className="flex justify-between mb-5 text-orange-900">
-          <h3 className="font-bold tracking-wide">Your TeleHealth Schedule</h3>
-          <div className="flex gap-5 items-center">
-            <a href="#" className="hover:text-orange-950">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </a>
-
-            <p>NOV 11-17</p>
-
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </a>
-          </div>
-        </header>
-        <div className="grid grid-cols-7 gap-5 text-lg text-center text-white">
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>MON</p>
-            <p>11</p>
-            <p>&#9679;</p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>TUE</p>
-            <p>12</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>WED</p>
-            <p>13</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>THU</p>
-            <p>14</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>FRI</p>
-            <p>15</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>SAT</p>
-            <p>16</p>
-            <p></p>
-          </a>
-          <a
-            href="#"
-            className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition"
-          >
-            <p>SUN</p>
-            <p>17</p>
-            <p></p>
-          </a>
-        </div>
-      </div>
-
-      <div className="bg-orange-200 rounded-xl p-5">
-        <h3 className="font-bold tracking-wide text-orange-900">
-          Your Daily Schedule
-        </h3>
-      </div>
+      <WeekTable />
+      <HourTable />
 
       <div className="grid grid-cols-5 gap-5 h-64">
-        <div className="col-span-3 bg-orange-200 p-5 rounded-xl text-orange-900">
-          <h3 className="font-bold tracking-wide">Medication</h3>
-          <div className="bg-orange-600 p-3">
-            <div className="flex gap-3 text-white">
-              <svg
-                width="26"
-                height="30"
-                viewBox="0 0 26 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M23.3282 5.16661L21.2342 2.9921C19.6608 1.35819 17.0451 1.35819 15.4717 2.9921L2.6718 16.2843C1.18018 17.8333 1.18018 20.2844 2.67181 21.8334L4.76578 24.0079C6.33917 25.6418 8.95495 25.6418 10.5283 24.0079L23.3282 10.7157C24.8198 9.16675 24.8198 6.7156 23.3282 5.16661Z"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M16 18V18C12.8545 16.6519 10.3481 14.1455 9 11V11"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <h4>Vancomycin</h4>
-            </div>
-          </div>
-        </div>
-        <div className="col-span-2 bg-orange-200 p-5 rounded-xl text-orange-900">
-          <h3 className="font-bold tracking-wide">Chatbot</h3>
-        </div>
+        <Medications />
+        <TemporaryAIComponentName />
       </div>
     </main>
   );
