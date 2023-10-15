@@ -4,12 +4,17 @@ import { useState, useEffect } from "react";
 
 interface WeekTableProps {
   selectedDate: String
+  onClickDay: Function
 }
 
-export function WeekTable({ selectedDate }: WeekTableProps) {
+export function WeekTable({ selectedDate, onClickDay }: WeekTableProps) {
   const DAYS: String[] = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
   const [curDateTime, setCurDateTime] = useState(new Date());
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
+
+  const updateSelected = (e: any) => {
+    onClickDay(e);
+  }
 
   const initializeDateRange = () => {
     const firstDate: Date = new Date(curDateTime.getFullYear(), curDateTime.getMonth(), curDateTime.getDate() - curDateTime.getDay());
@@ -83,12 +88,13 @@ export function WeekTable({ selectedDate }: WeekTableProps) {
           new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[0].getDate() + 1),
           new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[0].getDate() + 2), 
           new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[0].getDate() + 3),
-          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[1].getDate() - 2), 
-          new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[1].getDate() - 1),
+          new Date(dateRange[1].getFullYear(), dateRange[1].getMonth(), dateRange[1].getDate() - 2), 
+          new Date(dateRange[1].getFullYear(), dateRange[1].getMonth(), dateRange[1].getDate() - 1),
           dateRange[1]].map((date) => {
             return <a
             id={`${date.getFullYear()}-${date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}`}
               href="#"
+              onClick={updateSelected}
               className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition box-border border-4 border-transparent  focus:border-orange-800"
             >
               { DAYS[date.getDay()] } <br />

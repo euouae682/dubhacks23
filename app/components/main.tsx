@@ -91,7 +91,7 @@ export function Main() {
         </div>
       </header>
 
-      <WeekTable selectedDate={selectedDate} />
+      <WeekTable selectedDate={selectedDate} onClickDay={(e: any) => setSelectedDate(e.target.id)} />
       <HourTable selectedDate={selectedDate} />
 
       <div className="grid grid-cols-5 gap-5 h-64">
