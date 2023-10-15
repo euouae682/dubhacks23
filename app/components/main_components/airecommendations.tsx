@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Recommendation {
   index: number
@@ -9,29 +9,43 @@ interface Recommendation {
 }
 
 export function AIRecommendations() {
+  const patient_id = 1;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [recList, setRecList] = useState([
     {
       index: 0,
       title: 'Walking for 30 minutes.',
-      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
     },
     {
       index: 1,
       title: 'Meditating for 15 minutes.',
-      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
     },
     {
       index: 2,
       title: 'Hiking for 45 minutes.',
-      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
     },
     {
       index: 3,
       title: 'Walking for an hour.',
-      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
+      details: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.',
     },
   ])
+  useEffect(() => {
+    fetch(`/api/patients/${patient_id}/recommendations/openai`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({'date': '2023-10-15'}),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setRecList(data.map( (rec, i) => { return {'index': i, 'title': rec.title, 'details': rec.details}}))
+      }).then(() => {console.log(recList)})
+  }, [])
 
   const updateFocus = (e: any) => {
     setSelectedIndex(parseInt(e.target.id));
@@ -54,7 +68,7 @@ export function AIRecommendations() {
             { recList[selectedIndex].title }
           </h4>
           <p className="text-orange-800 text-base">
-            { recList[selectedIndex].description }
+            { recList[selectedIndex].details }
           </p>
           <p className="text-orange-800 font-bold" onClick={debugFocus}>
             Add time to your calendar?
