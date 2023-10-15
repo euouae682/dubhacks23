@@ -16,9 +16,10 @@ import { AIRecommendations } from "./main_components/airecommendations";
 
 export function Main() {
   const [selectedDate, setSelectedDate] = useState("2000-10-10");
+  const [eventToAdd, setEventToAdd] = useState();
 
   return (
-    <main className="flex flex-col gap-10 text-xl col-span-6 bg-orange-400 p-10">
+    <main className="flex flex-col gap-5 text-xl col-span-6 bg-orange-400 p-10">
       <header className="flex justify-between items-center">
         <div className="flex gap-5 items-center">
           <div className="flex items-center bg-orange-200 rounded-xl">

@@ -42,7 +42,7 @@ export function AIRecommendations() {
   }
 
   return (
-    <div className="col-span-3 flex flex-col justify-between bg-orange-200 p-5 rounded-xl">
+    <div className="col-span-3 flex flex-col justify-between bg-orange-200 p-5 rounded-3xl">
       <h3 className="text-orange-900 font-bold tracking-wide mb-5">
         AI Health Recommendations
       </h3>
