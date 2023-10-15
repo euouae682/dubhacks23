@@ -63,7 +63,7 @@ class EventSchema(Schema):
     end_time = auto_field(required=True)
     title = auto_field(required=True)
     location = auto_field(required=True)
-    logo = auto_field(required=True)
+    logo = auto_field()
 
 class VisitSchema(Schema):
     class Meta:
@@ -77,7 +77,5 @@ class VisitSchema(Schema):
     heartbeat = auto_field(required=True)
     notes = auto_field(required=True)
 
-
-
-class ChatSchema(Schema):
-    recommendation = fields.String(required=True)
+class RecommendationSchema(Schema):
+    date = fields.Date(required=True, load_only=True)
