@@ -15,7 +15,7 @@ export function Notes() {
         <Note author="Dr. Love" date="11/7/23" subtitle="Treatment Going Well"
         description="Scripts.com
         Bee Movie
-        By Jerry Seinfeld
+        By Jerry Seinfeldaa
         
         NARRATOR:
         (Black screen with text; The sound of buzzing bees can be heard)
