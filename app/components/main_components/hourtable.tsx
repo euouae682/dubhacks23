@@ -40,8 +40,8 @@ export function HourTable({ selectedDate }: HourTableProps) {
         <h3 className="font-bold tracking-wide text-orange-900" onClick={debugFetch}>
           Your Schedule
         </h3>
-        <div className="m-5 grid grid-cols-12 grid-rows-3 relative">
-          { Array.apply(null, Array(48)).map(function () {}).map(() => {
+        <div className="m-5 grid grid-cols-12 grid-rows-5 relative">
+          { Array.apply(null, Array(72)).map(function () {}).map(() => {
             return <div className="h-12 border-dashed border-l-2 border-orange-800 border-opacity-25"></div>
           })}
           <div className="col-span-2 mt-2 -ml-5 text-sm font text-orange-800">10:00 am</div>
