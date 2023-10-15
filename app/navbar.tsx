@@ -6,7 +6,7 @@ export function Navbar() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-center gap-10 text-xl">
+    <div className=" fixed flex flex-col items-center -ml-5 gap-10 text-xl">
       <a href="#" className="group" onClick={() => router.push('/')}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
