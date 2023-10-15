@@ -54,7 +54,7 @@ class PatientUpdate(db.Model):
     notes = db.Column(db.String())
 
     patient_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
-    # pain_points = db.relationship('PainPoint', backref='patient', lazy='dynamic')
+    pain_points = db.relationship('PainPoint', backref='patient', lazy='dynamic')
 
 class Event(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -66,10 +66,10 @@ class Event(db.Model):
 
     patient_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
-# class PainPoint(db.Model):
-#     id = db.Column(db.Integer(), primary_key=True)
-#     location = db.Column(db.String())
-#     title = db.Column(db.String())
-#     details = db.Column(db.String())
-#     color = db.Column(db.String())
-#     patient_update_id = db.Column(db.Integer(), db.ForeignKey('patient_update.id'))
+class PainPoint(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    location = db.Column(db.String())
+    title = db.Column(db.String())
+    details = db.Column(db.String())
+    color = db.Column(db.String())
+    patient_update_id = db.Column(db.Integer(), db.ForeignKey('patient_update.id'))

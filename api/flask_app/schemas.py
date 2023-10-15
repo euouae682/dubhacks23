@@ -1,7 +1,7 @@
 from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field
 from marshmallow import fields
 from flask_app import db
-from flask_app.models import User, PatientUpdate, Event
+from flask_app.models import User, PatientUpdate, Event, PainPoint
 
 class Schema(SQLAlchemySchema):
     def load(self, *args, **kwargs):
@@ -76,6 +76,17 @@ class VisitSchema(Schema):
     height = auto_field(required=True)
     heartbeat = auto_field(required=True)
     notes = auto_field(required=True)
+
+class PainPointSchema(Schema):
+    class Meta:
+        model = PainPoint
+        ordered = True
+
+    id = auto_field(required=True, dump_only=True)
+    location = auto_field(required=True)
+    title = auto_field(required=True)
+    details = auto_field(required=True)
+    color = auto_field(required=True)
 
 class RecommendationSchema(Schema):
     date = fields.Date(required=True, load_only=True)
