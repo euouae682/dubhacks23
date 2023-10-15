@@ -14,9 +14,9 @@ export function AIRecommendations() {
   const [recList, setRecList] = useState([
     {
       index: 0,
-      title: "Walk for 30 minutes.",
-      details:
-        "Walking is beneficial for your health because it improves cardiovascular fitness, reducing the risk of heart disease and high blood pressure.",
+      title: "Walking for 30 minutes.",
+      description:
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit cumque fuga quod id dolor odio exercitationem cum? Numquam ducimus.",
     },
     {
       index: 1,
