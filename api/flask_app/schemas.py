@@ -41,13 +41,13 @@ class DoctorSchemaPasswordless(DoctorSchema):
         exclude = ('password',)
 
 class PatientIDSchema(Schema):
-    id = fields.Integer()
+    id = fields.Integer(required=True)
 
 class DoctorIDSchema(Schema):
-    doctor_id = fields.Integer()
+    doctor_id = fields.Integer(required=True)
 
 class AuthTokenSchema(Schema):
-    auth_token = fields.String()
+    auth_token = fields.String(required=True)
 
 class AuthSchema(Schema):
     username = fields.String(required=True)
@@ -91,3 +91,7 @@ class PainPointSchema(Schema):
 
 class RecommendationSchema(Schema):
     date = fields.Date(required=True, load_only=True)
+
+class ChatbotMessageSchema(Schema):
+    role = fields.String(required=True)
+    content = fields.String(required=True)

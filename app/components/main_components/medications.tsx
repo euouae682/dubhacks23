@@ -68,7 +68,7 @@ export function Medications() {
               </p>
             </div>
             <div>
-              <p className="text-xs line-clamp-6">
+              <p className="text-xs line-clamp-6 hover:line-clamp-none">
                 {drugInfo.adverse_reactions[0]}
               </p>
             </div>

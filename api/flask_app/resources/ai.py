@@ -1,8 +1,8 @@
 from flask import current_app
 from flask.views import MethodView
 from flask_smorest import abort
-from flask_app.models import User, Event
-from flask_app.schemas import RecommendationSchema, EventSchema
+from flask_app.models import User, Event, PatientUpdate
+from flask_app.schemas import RecommendationSchema, EventSchema, ChatbotMessageSchema
 from flask_app.resources import ai_bp as bp
 from flask_app import httpauth, db
 from flask.views import MethodView
@@ -48,8 +48,29 @@ def get_bard_response(prompt) -> str:
 
     return response.text
 
+def construct_patient_history(patient):
+    last_visit = patient.visits.order_by(PatientUpdate.id.desc()).first()
+    patient_history = f'Pretend you are speaking to one of your patients. They are a {last_visit.weight} pound, {last_visit.height} inch cancer patient. They are currently on {last_visit.treatment}. The doctor had this to say about them: "{last_visit.notes}"'
+    return patient_history
+
+@bp.route('/patients/<int:id>/chatbot')
+class OpenAIChatbotView(MethodView):
+    @bp.arguments(ChatbotMessageSchema(many=True))
+    @bp.response(200, ChatbotMessageSchema)
+    def post(self, history, id):
+        '''
+        Accepts a list of previous, chronologically ordered messages of the form {'role': <role>, 'content': <content>}. Messages sent by the patient should have a role of 'user', and messages sent by the bot should have a role of 'assistant'. Messages from both parties should be included in the message history. Utilizes a patient's visit history to give responses specific to each patient. e.g. begin a conversation with just one message: [{'role': 'user', 'content': 'How much of my medication should I take?'}]
+        '''
+        patient = get_patient(id)
+        context = [{"role": "system", "content": "Pretend you are a highly knowledgeable and helpful oncologist. "}]
+        context[0]['content'] += construct_patient_history(patient)
+        context += history
+        print(context)
+        response = extract_message(openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=context))
+        return {'role': 'assistant', 'content': response}
+
 @bp.route('/patients/<int:id>/recommendations/openai')
-class OpenAIView(MethodView):
+class OpenAIRecommendationsView(MethodView):
     @bp.arguments(RecommendationSchema, as_kwargs=True)
     @bp.response(200, EventSchema(many=True))
     def post(self, date, id):
