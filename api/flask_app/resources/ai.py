@@ -35,7 +35,7 @@ def create_prompt_bard(events):
     for event in events[:-1]:
         prompt += f'a {event.title} from {event.start_time.strftime("%I:%M%p")} to {event.end_time.strftime("%I:%M%p")}, '
     prompt += f'a {events[-1].title} from {events[-1].start_time.strftime("%I:%M%p")} to {events[-1].end_time.strftime("%I:%M%p")}. '
-    prompt += 'Fill in the rest of the schedule with a few (2 - 3) tasks the patient can do by themselves to aid with recovery. Be specific, and do not include things the patient would do anyway, such as sleep. Your answer should be formatted as a list of "<task_title>, <location>, <start_time>, <end_time>" with a single linebreak in between each task, and no other text or advice. task_title should be short, and no fields should include commas.'
+    prompt += 'Fill in the rest of the schedule with a few (2 - 3) tasks the patient can do by themselves to aid with recovery. Be specific, and do not include things the patient would do anyway, such as sleep. Your answer should be formatted as a list of "<task_title>, <location>, <start_time>, <end_time>" with a single linebreak in between each task, and no other text or advice, such as numbered lines. task_title should be short, and no fields should include commas.'
     return prompt
 
 def get_bard_response(prompt) -> str:
