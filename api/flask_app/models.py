@@ -51,6 +51,7 @@ class PatientUpdate(db.Model):
     weight = db.Column(db.Integer())
     height = db.Column(db.Integer())
     heartbeat = db.Column(db.Integer())
+    treatment = db.Column(db.String())
     notes = db.Column(db.String())
 
     patient_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
