@@ -1,6 +1,12 @@
+"use client";
+
 import Image from "next/image";
 
+import { useRouter } from "next/navigation";
+
 export function LogInForm() {
+  const router = useRouter();
+
   return (
     <div
       className="flex flex-col gap-10 items-start bg-orange-200 px-20 py-10 h-screen       
@@ -44,7 +50,15 @@ export function LogInForm() {
         className="bg-orange-800 rounded-xl px-8 py-4 text-white font-bold text-2xl inline-block
         hover:bg-orange-900 transition"
       >
-        Sign Up
+        Log In
+      </a>
+
+      <a
+        href="#"
+        className="text-orange-800 text-lg hover:text-orange-600 transition underline"
+        onClick={() => router.push("/sign-up")}
+      >
+        Don't have an account? Sign up now.
       </a>
     </div>
   );
