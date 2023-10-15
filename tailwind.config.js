@@ -20,6 +20,9 @@ module.exports = {
         "orange-700": "#CB583C",
         "orange-800": "#7A4040",
       },
+      scale: {
+        "-100": "-1",
+      },
     },
   },
   plugins: [],

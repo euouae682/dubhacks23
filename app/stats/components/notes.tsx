@@ -1,289 +1,37 @@
-'use client';
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import { Note } from "./note";
 
 export function Notes() {
-    const [noteList, setNoteList] = useState([]);
+  const [noteList, setNoteList] = useState([]);
 
-    return <div className="w-1/3">
-        <h2>Notes</h2>
-        <Note author="Dr. Love" date="11/10/23" subtitle="Adjusting Medication"
-        description="sadkljkfjdalfsakfjkalihgfehdwlaitsdaoiufkialfyialfmhvnkvuuvfjskvfuymkfywuksfkkhjsdhfhkfdakfdhgfdkghsfdghfdhgkafdkhhcgnyfesdvgnsdkhskfdhmgmcsdhkfhmchfcjfxdkhgvsehmfduugholcsxedumlgxo,yaduo,usf,hur,outy4,y7weygmdas,43,fweadkuaxwe,sa" />
-        <Note author="Luna" date="11/9/23" subtitle="Pain in Leg+ Side Effects?"
-        description="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSSSSSSSSSSSSSSSFKGJGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD" />
-        <Note author="Dr. Love" date="11/7/23" subtitle="Treatment Going Well"
-        description="Scripts.com
-        Bee Movie
-        By Jerry Seinfeldaa
-        
-        NARRATOR:
-        (Black screen with text; The sound of buzzing bees can be heard)
-        According to all known laws
-        of aviation,
-         :
-        there is no way a bee
-        should be able to fly.
-         :
-        Its wings are too small to get
-        its fat little body off the ground.
-         :
-        The bee, of course, flies anyway
-         :
-        because bees don't care
-        what humans think is impossible.
-        BARRY BENSON:
-        (Barry is picking out a shirt)
-        Yellow, black. Yellow, black.
-        Yellow, black. Yellow, black.
-         :
-        Ooh, black and yellow!
-        Let's shake it up a little.
-        JANET BENSON:
-        Barry! Breakfast is ready!
-        BARRY:
-        Coming!
-         :
-        Hang on a second.
-        (Barry uses his antenna like a phone)
-         :
-        Hello?
-        ADAM FLAYMAN:
-        
-        (Through phone)
-        - Barry?
-        BARRY:
-        - Adam?
-        ADAM:
-        - Can you believe this is happening?
-        BARRY:
-        - I can't. I'll pick you up.
-        (Barry flies down the stairs)
-         :
-        MARTIN BENSON:
-        Looking sharp.
-        JANET:
-        Use the stairs. Your father
-        paid good money for those.
-        BARRY:
-        Sorry. I'm excited.
-        MARTIN:
-        Here's the graduate.
-        We're very proud of you, son.
-         :
-        A perfect report card, all B's.
-        JANET:
-        Very proud.
-        (Rubs Barry's hair)
-        BARRY=
-        Ma! I got a thing going here.
-        JANET:
-        - You got lint on your fuzz.
-        BARRY:
-        - Ow! That's me!
-        
-        JANET:
-        - Wave to us! We'll be in row 118,000.
-        - Bye!
-        (Barry flies out the door)
-        JANET:
-        Barry, I told you,
-        stop flying in the house!
-        (Barry drives through the hive,and is waved at by Adam who is reading a
-        newspaper)
-        BARRY==
-        - Hey, Adam.
-        ADAM:
-        - Hey, Barry.
-        (Adam gets in Barry's car)
-         :
-        - Is that fuzz gel?
-        BARRY:
-        - A little. Special day, graduation.
-        ADAM:
-        Never thought I'd make it.
-        (Barry pulls away from the house and continues driving)
-        BARRY:
-        Three days grade school,
-        three days high school...
-        ADAM:
-        Those were awkward.
-        BARRY:
-        Three days college. I'm glad I took
-        a day and hitchhiked around the hive.
-        ADAM==
-        You did come back different.
-        (Barry and Adam pass by Artie, who is jogging)
-        ARTIE:
-        - Hi, Barry!
-        
-        BARRY:
-        - Artie, growing a mustache? Looks good.
-        ADAM:
-        - Hear about Frankie?
-        BARRY:
-        - Yeah.
-        ADAM==
-        - You going to the funeral?
-        BARRY:
-        - No, I'm not going to his funeral.
-         :
-        Everybody knows,
-        sting someone, you die.
-         :
-        Don't waste it on a squirrel.
-        Such a hothead.
-        ADAM:
-        I guess he could have
-        just gotten out of the way.
-        (The car does a barrel roll on the loop-shaped bridge and lands on the
-        highway)
-         :
-        I love this incorporating
-        an amusement park into our regular day.
-        BARRY:
-        I guess that's why they say we don't need vacations.
-        (Barry parallel parks the car and together they fly over the graduating
-        students)
-        Boy, quite a bit of pomp...
-        under the circumstances.
-        (Barry and Adam sit down and put on their hats)
-         :
-        - Well, Adam, today we are men.
-        
-        ADAM:
-        - We are!
-        BARRY=
-        - Bee-men.
-        =ADAM=
-        - Amen!
-        BARRY AND ADAM:
-        Hallelujah!
-        (Barry and Adam both have a happy spasm)
-        ANNOUNCER:
-        Students, faculty, distinguished bees,
-         :
-        please welcome Dean Buzzwell.
-        DEAN BUZZWELL:
-        Welcome, New Hive Oity
-        graduating class of...
-         :
-        ...9:
-         :
-        That concludes our ceremonies.
-         :
-        And begins your career
-        at Honex Industries!
-        ADAM:
-        Will we pick our job today?
-        (Adam and Barry get into a tour bus)
-        BARRY=
-        I heard it's just orientation.
-        (Tour buses rise out of the ground and the students are automatically
-        loaded into the buses)
-        TOUR GUIDE:
-        Heads up! Here we go.
-        
-        ANNOUNCER:
-        Keep your hands and antennas
-        inside the tram at all times.
-        BARRY:
-        - Wonder what it'll be like?
-        ADAM:
-        - A little scary.
-        TOUR GUIDE==
-        Welcome to Honex,
-        a division of Honesco
-         :
-        and a part of the Hexagon Group.
-        Barry:
-        This is it!
-        BARRY AND ADAM:
-        Wow.
-        BARRY:
-        Wow.
-        (The bus drives down a road an on either side are the Bee's massive
-        complicated Honey-making machines)
-        TOUR GUIDE:
-        We know that you, as a bee,
-        have worked your whole life
-         :
-        to get to the point where you
-        can work for your whole life.
-         :
-        Honey begins when our valiant Pollen
-        Jocks bring the nectar to the hive.
-         :
-        Our top-secret formula
-         :
-        is automatically color-corrected,
-        
-        scent-adjusted and bubble-contoured
-         :
-        into this soothing sweet syrup
-         :
-        with its distinctive
-        golden glow you know as...
-        EVERYONE ON BUS:
-        Honey!
-        (The guide has been collecting honey into a bottle and she throws it into
-        the crowd on the bus and it is caught by a girl in the back)
-        ADAM:
-        - That girl was hot.
-        BARRY:
-        - She's my cousin!
-        ADAM==
-        - She is?
-        BARRY:
-        - Yes, we're all cousins.
-        ADAM:
-        - Right. You're right.
-        TOUR GUIDE:
-        - At Honex, we constantly strive
-         :
-        to improve every aspect
-        of bee existence.
-         :
-        These bees are stress-testing
-        a new helmet technology.
-        (The bus passes by a Bee wearing a helmet who is being smashed into the
-        ground with fly-swatters, newspapers and boots. He lifts a thumbs up but
-        you can hear him groan)
-         :
-        ADAM==
-        
-        - What do you think he makes?
-        BARRY:
-        - Not enough.
-        TOUR GUIDE:
-        Here we have our latest advancement,
-        the Krelman.
-        (They pass by a turning wheel with Bees standing on pegs, who are each
-        wearing a finger-shaped hat)
-        Barry:
-        - Wow, What does that do?
-        TOUR GUIDE:
-        - Catches that little strand of honey
-         :
-        that hangs after you pour it.
-        Saves us millions.
-        ADAM:
-        (Intrigued)
-        Can anyone work on the Krelman?
-        TOUR GUIDE:
-        Of course. Most bee jobs are
-        small ones.
-        But bees know that every small job,
-        if it's done well, means a lot.
-         :
-        But choose carefully
-         :
-        because you'll stay in the job
-        you pick for the rest of your life.
-        (Everyone claps except for Barry)
-        BARRY:
-        The same job the rest of your life?
-        I didn't know that.
-        ADAM:" />
+  return (
+    <div className="p-5 bg-orange-200 rounded-xl">
+      <h3 className="text-2xl text-orange-900 font-bold">Notes</h3>
+
+      <Note
+        author="Dr. Love"
+        date="11/10/23"
+        subtitle="Adjusting Medication"
+        description="grrrr jappan 🇯🇵 is best country in teh world (sekai) !!!!🤬😡!!!👹🤬!!!!! 
+        west bAd grrrgghhhg japenis culture⛩🎎🎏 better than amrican🗽🍔👎!!! (>~<) vendor machine 
+        eveywhere 🗼and sakura trees are so 🌸 a e s t h e t i c 🌸 UwU if u hate it then your NOT 
+        a man of culture so shinē!!! ~hmph baka -_- 🏮"
+      />
+      <Note
+        author="Luna"
+        date="11/9/23"
+        subtitle="Pain in Leg+ Side Effects?"
+        description="😂G̭̺̙͔̦̖̭E̞̫͙T͕͇😂̩̩̭̗O̝̗̯̖͍͙̬͎U̲͎͕̳͓̱̖̯T̤😂̞̮͓̙O͍͉̥̻̣̺̩̗F͔̜̻͙̥̱ͅ😂̦͖͚͚̺͚M͙Y̘😂͉̝̘̖̮̜H̱̬̲̯E̘̗̥̹͚͕ͅA̠̰̳͇̻̖͇̬D̩͍̩͔̭͓😂͖̹G̻̞̺̬͓̫͙͔E̻̫̙̞T̹̙̹😂̞͙͔̣̪̩O͙̪̹͙͈̪͖̘U͍͚̱͖T̫̫̝̰̝😂̫̤̥̱̖̳̜O͎̼͔͖̥̩F͇̫̳͔̝😂̬͉M͎̙̤̦̰̱͙Y̫̭̜͚̦͈̰😂͈̖̰͎͉H̳̳̬͔͙̲ͅͅE̻͇̹̬̰̜̖̱A͈̜D̜̣͕̫̯̻̝̭😂̰G̠̲͔̻͔̙̯E̯͚̙̘T̙̜͍̳̩̣͕̭😂̠̪̪͎̱O̹̰̺͙̘̪̭̞̱U̻̮͔͈̠ͅT̫͍͖̪̞͚😂͎̖̥͇O͕̩̯̠̹̜͖F̗͉͚͈̤😂̘̠͈̲̦͉̠M̝͈̰̥̹̗̯ͅY̻͕̳͔̠̟̼̙̣😂̜̗̩̼͓͖H̪͍̞͓̟̠̼̻E̥̰͕̳̣͉̪̭A͔D̗̮
+        😂͔̜̜͙̤̹̩G̗̤͙̩̤̳E̜̗̥̼̲̺T̫͇̞̺̞😂̭̩̦̹̹̭O̭̯͉̫͎̻̮U̮͇͇͔̗T̞̭̦̼̗̹😂̜̪͖͍O̰͓͎̘̜̙͕F̞̝̖😂̩̟͖̭͍̦M̺̖̙̺Y͙̫̤̺̠̰😂̞̫̩H̖̤͍̣͔̟ͅE̞̹̞̗̭̳Ḁ̗͚͔͖D͓͇̱͍̖͙ͅ😂͈̳G̟̫̣͎̞͖͔͇Ẹ̘̦̭ͅT̩̻͎̹͓̭😂̺̦̞͔̫̟O̫U̪̪̩T͉̻̰͎̙̹̣̯😂͍̲̰̟O̞̬͚̻̞̹̪̳ͅF͚͓̤͓͕̱͖😂̦̟̣̖͇̦͕̞M͍̬͚̠̪̙Y̖̮̟̜̗̻̺😂̪H̬̝̬̼̫̺̗̦E͈̱A͈̗̜͚̭̱͇̙ͅD̳̻"
+      />
+      <Note
+        author="Dr. Love"
+        date="11/7/23"
+        subtitle="Treatment Going Well"
+        description="NO HABLAS ESPANOL!!!!"
+      />
     </div>
+  );
 }
