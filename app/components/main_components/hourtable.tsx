@@ -3,12 +3,20 @@
 import { ScheduleItem } from "./scheduleitem"
 import { useState } from "react"
 
-export function HourTable() {
+interface HourTableProps {
+  selectedDate: String
+}
+
+export function HourTable({ selectedDate }: HourTableProps) {
   const [beginTime, setBeginTime] = useState(new Date('2023-10-14T10:00'));
+
+  const debugSelectedDate = () => {
+    console.log(selectedDate);
+  }
 
     return (
       <div className="bg-orange-200 rounded-xl p-5">
-        <h3 className="font-bold tracking-wide text-orange-900">
+        <h3 className="font-bold tracking-wide text-orange-900" onClick={debugSelectedDate}>
           Your Schedule
         </h3>
         <div className="m-5 grid grid-cols-12 grid-rows-3 relative">

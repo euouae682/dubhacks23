@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 
-export function WeekTable() {
+interface WeekTableProps {
+  selectedDate: String
+}
+
+export function WeekTable({ selectedDate }: WeekTableProps) {
   const DAYS: String[] = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
   const [curDateTime, setCurDateTime] = useState(new Date());
   const [dateRange, setDateRange] = useState([new Date(), new Date()]);
@@ -83,14 +87,13 @@ export function WeekTable() {
           new Date(dateRange[0].getFullYear(), dateRange[0].getMonth(), dateRange[1].getDate() - 1),
           dateRange[1]].map((date) => {
             return <a
+            id={`${date.getFullYear()}-${date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? '0' + date.getDate() : date.getDate()}`}
               href="#"
               className="px-0.5 py-1.5 rounded-2xl bg-orange-600 hover:bg-orange-700 transition box-border border-4 border-transparent  focus:border-orange-800"
             >
-              <p>{
-                DAYS[date.getDay()]
-              }</p>
-              <p>{ date.getDate() }</p>
-              <p>{ date.toDateString() === new Date().toDateString() ? '\u25CF' : '' }</p>
+              { DAYS[date.getDay()] } <br />
+              { date.getDate() } <br />
+              { date.toDateString() === new Date().toDateString() ? '\u25CF' : '' }
           </a>
           })}
         </div>

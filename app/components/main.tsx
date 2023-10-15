@@ -14,7 +14,7 @@ import { TemporaryAIComponentName } from "./main_components/tempai";
 import { useState } from "react";
 
 export function Main() {
-  
+  const [selectedDate, setSelectedDate] = useState("2000-10-10");
 
   return (
     <main className="flex flex-col gap-10 text-xl col-span-6 bg-orange-400 p-10">
@@ -91,8 +91,8 @@ export function Main() {
         </div>
       </header>
 
-      <WeekTable />
-      <HourTable />
+      <WeekTable selectedDate={selectedDate} />
+      <HourTable selectedDate={selectedDate} />
 
       <div className="grid grid-cols-5 gap-5 h-64">
         <Medications />
