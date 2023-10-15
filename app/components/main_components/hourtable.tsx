@@ -57,8 +57,8 @@ export function HourTable({ selectedDate }: HourTableProps) {
           })}
 
           <ScheduleItem color="bg-orange-800" name="Blood Draw" location="Floor 3, Room 311" begin={new Date('2023-10-15T10:20')} end={new Date('2023-10-15T11:50')} scheduleBegin={beginTime} zAlign={0} />
-          <ScheduleItem color="bg-orange-700" name="Web Development Hell" location="MGH 342" begin={new Date('2023-10-15T11:30')} end={new Date('2023-10-15T14:55')} scheduleBegin={beginTime} zAlign={1} />
-          <ScheduleItem color="bg-orange-700" name="Salvation" location="freedom" begin={new Date('2023-10-16T14:00')} end={new Date('2023-10-16T15:30')} scheduleBegin={beginTime} zAlign={2} />
+          <ScheduleItem color="bg-orange-700" name="Wellness Seminar" location="MGH 342" begin={new Date('2023-10-15T11:30')} end={new Date('2023-10-15T12:40')} scheduleBegin={beginTime} zAlign={1} />
+          <ScheduleItem color="bg-orange-700" name="Weekly Walk" location="freedom" begin={new Date('2023-10-16T14:00')} end={new Date('2023-10-16T15:30')} scheduleBegin={beginTime} zAlign={2} />
         </div>
       </div>
     )
