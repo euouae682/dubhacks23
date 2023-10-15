@@ -27,7 +27,7 @@ def create_prompt(events):
     for event in events[:-1]:
         prompt += f'a {event.title.lower()} from {event.start_time.strftime("%I:%M%p")} to {event.end_time.strftime("%I:%M%p")}, '
     prompt += f'a {events[-1].title.lower()} from {events[-1].start_time.strftime("%I:%M%p")} to {events[-1].end_time.strftime("%I:%M%p")}. '
-    prompt += 'Fill in the rest of the schedule with a few (2 - 3) tasks the patient can do by themselves to aid with recovery. Be specific, and do not include things the patient would do anyway, such as sleep. Your answer should be formatted as a list of "<task_title>, <location>, <start_time>, <end_time>" with a linebreak in between each task, and no other text or advice. task_title should be short, and no fields should include commas.'
+    prompt += 'Fill in the rest of the schedule with a few (2 - 3) tasks the patient can do by themselves to aid with recovery. Be specific, and do not include things the patient would do anyway, such as sleep. Your answer should be formatted as a list of "<task_title>;<location>;<start_time>;<end_time>;<details>" with a linebreak in between each task, and no other text or advice. task_title should be short, and details should be a brief description of the benefits of the task.'
     return prompt
 
 def create_prompt_bard(events):
@@ -35,7 +35,7 @@ def create_prompt_bard(events):
     for event in events[:-1]:
         prompt += f'a {event.title} from {event.start_time.strftime("%I:%M%p")} to {event.end_time.strftime("%I:%M%p")}, '
     prompt += f'a {events[-1].title} from {events[-1].start_time.strftime("%I:%M%p")} to {events[-1].end_time.strftime("%I:%M%p")}. '
-    prompt += 'Fill in the rest of the schedule with a few (2 - 3) tasks the patient can do by themselves to aid with recovery. Be specific, and do not include things the patient would do anyway, such as sleep. Your answer should be formatted as a list of "<task_title>, <location>, <start_time>, <end_time>" with a linebreak in between each task, and no other text or advice. task_title should be short, and no fields should include commas.'
+    prompt += 'Fill in the rest of the schedule with a few (2 - 3) tasks the patient can do by themselves to aid with recovery. Be specific, and do not include things the patient would do anyway, such as sleep. Your answer should be formatted as a list of "<task_title>, <location>, <start_time>, <end_time>" with a single linebreak in between each task, and no other text or advice, such as numbered lines. task_title should be short, and no fields should include commas.'
     return prompt
 
 def get_bard_response(prompt) -> str:
@@ -50,7 +50,7 @@ def get_bard_response(prompt) -> str:
 
 def construct_patient_history(patient):
     last_visit = patient.visits.order_by(PatientUpdate.id.desc()).first()
-    patient_history = f'Pretend you are speaking to one of your patients. They are a {last_visit.weight} pound, {last_visit.height} inch cancer patient. They are currently on {last_visit.treatment}. The doctor had this to say about them: "{last_visit.notes}"'
+    patient_history = f'Pretend you are speaking to one of your patients. They are a {last_visit.weight} pound, {last_visit.height} inch cancer patient. They are currently on {last_visit.treatment}. Speak concisely. The doctor had this to say about them: "{last_visit.notes}"'
     return patient_history
 
 @bp.route('/patients/<int:id>/chatbot')
@@ -66,7 +66,7 @@ class OpenAIChatbotView(MethodView):
         context[0]['content'] += construct_patient_history(patient)
         context += history
         print(context)
-        response = extract_message(openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=context))
+        response = extract_message(openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=context, max_tokens=50))
         return {'role': 'assistant', 'content': response}
 
 @bp.route('/patients/<int:id>/recommendations/openai')
@@ -87,9 +87,9 @@ class OpenAIRecommendationsView(MethodView):
             print(response)
             new_events = []
             for new_event in response.split('\n'):
-                new_event = new_event.split(', ')
-                new_events.append({'title': new_event[0], 'location': new_event[1], 'start_time': datetime.strptime(f'{date} {new_event[2]}', "%Y-%m-%d %I:%M%p"), 'end_time': datetime.strptime(f'{date} {new_event[3]}', "%Y-%m-%d %I:%M%p")})
-
+                new_event = new_event.split(';')
+                if len(new_event) == 5:
+                    new_events.append({'title': new_event[0], 'location': new_event[1], 'start_time': datetime.strptime(f'{date} {new_event[2]}', "%Y-%m-%d %I:%M%p"), 'end_time': datetime.strptime(f'{date} {new_event[3]}', "%Y-%m-%d %I:%M%p"), 'details': new_event[4]})
             return new_events
 
 @bp.route('/patients/<int:id>/recommendations/vertexai')
