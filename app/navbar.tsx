@@ -1,7 +1,13 @@
+'use client';
+
+import { useRouter } from "next/navigation";
+
 export function Navbar() {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col items-center gap-10 text-xl">
-      <a href="#" className="group">
+      <a href="#" className="group" onClick={() => router.push('/')}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -13,7 +19,7 @@ export function Navbar() {
         </svg>
       </a>
 
-      <a href="#" className="group">
+      <a href="#" className="group" onClick={() => router.push('/stats')}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

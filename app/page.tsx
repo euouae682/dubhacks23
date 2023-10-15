@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "./components/navbar";
+import { Navbar } from "./navbar";
 import { Diagram } from "./components/diagram";
 import { Main } from "./components/main";
 
