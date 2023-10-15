@@ -1,7 +1,7 @@
 export function Chatbot() {
   return (
     <div
-      className="col-span-2 bg-orange-200 p-5 rounded-xl text-orange-900 bg-[url(/chatbot.png)]
+      className="col-span-2 bg-orange-100 bg-opacity-70 p-5 rounded-xl text-orange-900 bg-[url(/chatbot.png)]
       bg-[length:10rem] bg-no-repeat bg-right-bottom"
     >
       <div className="flex items-center gap-3 mb-5">
